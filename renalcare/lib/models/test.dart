@@ -9,17 +9,28 @@ class UserDetails{
     {this.id, required this.name,required this.email,required this.phone}
   );
 
-  UserDetails.fromMap(Map<String, dynamic> data):
+  UserDetails.fromJson(Map<String, dynamic> data): 
     id = data['id'],
     name = data['name'],
     email = data['email'],
     phone = data['phone'];
 
-  Map<String, dynamic> toMap(){
+  UserDetails copyWith({String ?id, String ?name, String ?email, String ?phone}){
+    return UserDetails(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      email: email ?? this.email,
+      phone: phone ?? this.phone,
+    );
+  }
+
+  Map<String, dynamic> toJson(){
     return {
       'name': name,
       'email': email,
       'phone': phone,
     };
   }
+
+   
 }

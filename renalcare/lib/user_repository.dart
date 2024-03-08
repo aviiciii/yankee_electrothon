@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
-import 'package:renalcare/db/test.dart';
+import 'package:renalcare/models/test.dart';
 import 'package:flutter/material.dart';
 
 

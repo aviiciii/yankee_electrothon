@@ -1,19 +1,13 @@
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:renalcare/db/test.dart';
+import 'package:renalcare/models/test.dart';
 import 'package:renalcare/user_repository.dart';
 
 
 class SignupController extends GetxController {
   static SignupController get instance => Get.find();
 
-
- 
 final email = TextEditingController();
 final name = TextEditingController();
 final phone = TextEditingController();
