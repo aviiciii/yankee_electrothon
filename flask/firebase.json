@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "renalcare-fd7f5",
+  "private_key_id": "14e4e94aa107ccd76d043b0c18d60b3a8629e3d0",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCVS8FD7QF93+uj\n+b+lx2zrkjtM/9yT8EdqtMQNBmLyDreTPs9hzbiO/Zh+o0cBtx7Ccdo0aMUBZs2u\n31ayXJ30lWy4uhyjQ+qWz5KfBPdZFPhXGZTddNf77IEJEncAD9baKXFNlfHCrkXz\nRn/yeMqYlrxphhvZ/j22BMP31L89RLbca1zf4ZzvkGg2UOl8eTqkPvJ4m7aMkqVf\n1I2YeVCkSkULrMaFxLQDUh6t2ZKOpv3zv0RtMnLcwzAogrTAuLOqJMcfMYRIDWTV\nc97k7OXFEgFrvYqaCIGFM2iVhiLbpG36jsqDF25JRMvQsyb/BAiJXqlMUN1sJyoH\ngnbyFc+ZAgMBAAECggEADmaPvk8SqUMbliYFe+aoFXL2AF/ftW9kXCESlhULH0EX\nKP9SfqMazcQdXP2/4CT7NRNJUmvWsONrLJaDZNH1NH3jTlA5afAnpSNhh7AxcajJ\nqZEgoFngaX7vFWJwExP0C/gaYzr25mnr+mLO/aL0G9LSWrViY10YM8Hy6ylcxvp/\niSXUfZmh8WfN0qZi5q9mhMjaaGyMBLRl+k3PL6TnYRBqC96Kx3eA2jJvemj7UuD+\nupQu/fKOwMm4KnZ1Huji/l8xjpl5THu3hSJDWKUIrXbugZYJhrF5glMKQkYs5Z74\nnqCQ/iBqAcH9Rqb5JJSieXJPE1QBWg80fjGfwGU1TwKBgQDOnSuZN19Lf1wBdhft\nAtIyf/HWguzZAFVCKcYIkGqR3e0taXV3kr4IQR3KlMArSKuH4gCYHer4PytngKm+\nGZVnvr8KmuY6adTJ0BdXcK8Y29Zl0FwImZw51rbS8Tv1NNoOpjBoKUxY4K7w+AR7\nNVBEhTdUsHv+CGmH8YDiEy3LFwKBgQC4+0Kx167IIfR9AXRP1bWkkrh/q/C8VI9o\nAHfKkPP/BjHgupdr3RXs3oUsUPdQ4mNPiKBg8KLplTYRLYrcuFlDKWkZunULdt9z\nrzalLrFyLaCbmzJn1Nk1PlQ552ptUhOkNeMrBkCZhamDwKMto3EbGeOO8E3uJeZk\nFu7QQiUozwKBgFNQh3MqI/AytCwWrcEyAQbCFwf0FYPPoZGjfKqZaY/WWLyWKPsF\nnkF/2H6HCxKpJBoQJUMx1T0zY9JBzLDOajPCdBDXs3zcjiSvF6p30vOIOmUl5ubE\n4n1kOqbHBfFz1XZQx3ZJKPMx7vlWWaBBOFPZEB3DaMxgIgXieaEwMKgTAoGAcVQG\nVVx1SUl8NwWoE60zfqMhA578evU3cpkuytypj6lk73CBimTFpPvjDPaBvn0kKLrk\nvt9Of9qZaEbFl1od3cbGDCwuvxpR5dcHnIWR0wjfJ9YaOICvni4UffEoQ9eQDv+w\nsFBBTY0VAJIJptFGXzsqLg1NQUTY9KMUJmUPzQMCgYEArOPKpZ5Oq/EAKpuVteq6\nW4H5A8ImKtsBX0Tbl8MHzYqYp1/roDXCHTqmC7/ui0qIK6AE8Q5y/772JltXsN7m\nP8y0vfUqbXDo5Tc1Xe6L66h5g7DST/CEMNDq4K6wX3Sa6qBnEiKRqlRlCYC+RivE\n4tXJpWCF1bTMTEgYRHAn4rc=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-jyw6s@renalcare-fd7f5.iam.gserviceaccount.com",
+  "client_id": "106309220653065987952",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-jyw6s%40renalcare-fd7f5.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
