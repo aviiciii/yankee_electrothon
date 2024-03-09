@@ -3,6 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:renalcare/pages/login/1.dart';
+import 'package:renalcare/pages/splashscreen/1.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});
@@ -70,7 +72,11 @@ class _NavBarState extends State<NavBar> {
           title: Text("Logout"),
           onTap: () async {
             await _auth.signOut();
-            Get.to(login());
+
+            SharedPreferences pref = await SharedPreferences.getInstance();
+            pref.remove("email");
+
+            Get.to(splashScreen());
           },
         ),
       ],
