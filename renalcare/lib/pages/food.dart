@@ -5,7 +5,7 @@ class food extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      return Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: Text(
           'Test',
@@ -13,28 +13,29 @@ class food extends StatelessWidget {
         ),
       ),
       body: Center(
-    child: Stack(
-      children: <Widget>[
-        Container(
-          alignment: Alignment.center,
-          child: Image.network(
-            'https://p1.hiclipart.com/preview/653/92/937/indian-food-idli-sambar-indian-cuisine-rava-idli-south-indian-cuisine-breakfast-dal-png-clipart.jpg',
-            height: 250,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
+        child: Stack(
+          children: <Widget>[
+            Container(
+              alignment: Alignment.center,
+              child: Image.network(
+                'https://p1.hiclipart.com/preview/653/92/937/indian-food-idli-sambar-indian-cuisine-rava-idli-south-indian-cuisine-breakfast-dal-png-clipart.jpg',
+                height: 250,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Container(
+                alignment: Alignment.center,
+                child: Text(
+                  'Idly & Sambar',
+                  style: TextStyle(
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22.0),
+                )),
+          ],
         ),
-        Container(
-            alignment: Alignment.center,
-            child: Text(
-              'Idly & Sambar',
-              style: TextStyle(color: Colors.blue,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 22.0),
-            )),
-      ],
-    ),
-  ),
+      ),
     );
   }
 }
