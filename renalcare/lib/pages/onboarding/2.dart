@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:renalcare/pages/onboarding/3.dart';
+// import 'package:renalcare/pages/onboarding/3.dart';
 
 class OnboardingUserDetail2 extends StatefulWidget {
   const OnboardingUserDetail2({Key? key}) : super(key: key);
@@ -97,7 +97,7 @@ class _OnboardingUserDetail2State extends State<OnboardingUserDetail2> {
             });
 
             // Navigate to the next page
-            Get.to(OnboardingUserDetail3());
+            // Get.to(OnboardingUserDetail3());
           } else {
             // Handle the case where the user is not signed in
             print('User is not signed in.');
