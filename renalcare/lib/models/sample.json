@@ -5,6 +5,8 @@
     "ckd level": "3",
     "dialysis": "yes",
     "age": "25",
+    "diabetes": "yes",
+    "blood_pressure": "yes",
     "dialysis_details":{
         "frequency": "3",
         "last_date": "12/12/2019"
