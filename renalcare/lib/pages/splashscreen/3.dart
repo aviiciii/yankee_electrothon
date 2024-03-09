@@ -33,12 +33,15 @@ class splashScreen3 extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  
                   const Text("Features",
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold,)),
-                  const SizedBox(height: 50,),
-              
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      )),
+                  const SizedBox(
+                    height: 50,
+                  ),
+
                   //features points
                   Text('• Personalized diet plans for CKD levels'),
                   SizedBox(
@@ -58,13 +61,11 @@ class splashScreen3 extends StatelessWidget {
                   ),
                   Text('• Customizable recipes based on user preferences '),
                   SizedBox(
-                    height: 50,
+                    height: 35,
                   ),
-                  
-                  
-              
+
                   //Row of button
-              
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
