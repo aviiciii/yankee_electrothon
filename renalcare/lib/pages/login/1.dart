@@ -2,9 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:renalcare/pages/onboarding/1.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_in_button/sign_in_button.dart';
-
-import '../homepage.dart';
 
 class login extends StatefulWidget {
   const login({super.key});
@@ -72,6 +71,10 @@ class _loginState extends State<login> {
     try {
       GoogleAuthProvider googleProvider = GoogleAuthProvider();
       await _auth.signInWithProvider(googleProvider);
+      // save to shared preferences
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString("email", _user!.email.toString());
+
       Get.to(OnboardingUserDetail1());
     } catch (e) {
       print(e);
