@@ -35,18 +35,32 @@ class splashScreen3 extends StatelessWidget {
                         TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
 
                 const SizedBox(
-                  height: 20,
+                  height: 50,
                 ),
 
                 //features points
-
-                Text('Feature 1'),
-                Text('Feature 1'),
-                Text('Feature 1'),
-                Text('Feature 1'),
-                Text('Feature 1'),
-                Text('Feature 1'),
-                Text('Feature 1'),
+                Text('• Feature 1'),
+                SizedBox(
+                  height: 10,
+                ),
+                Text('• Feature 2'),
+                SizedBox(
+                  height: 10,
+                ),
+                Text('• Feature 3'),
+                SizedBox(
+                  height: 10,
+                ),
+                Text('• Feature 4'),
+                SizedBox(
+                  height: 10,
+                ),
+                Text('• Feature 5'),
+                SizedBox(
+                  height: 50,
+                ),
+                
+                
 
                 //Row of button
 

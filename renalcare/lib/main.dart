@@ -12,7 +12,9 @@ import 'package:renalcare/pages/splashscreen/1.dart';
 
 import 'firebase_options.dart';
 import 'package:get/get.dart';
+import 'pages/food.dart';
 import 'pages/graph/bar_chart.dart';
+import 'pages/splashscreen/3.dart';
 
 // pages
 
@@ -36,7 +38,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: profile(),
+      home: splashScreen3(),
     );
   }
 }
