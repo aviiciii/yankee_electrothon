@@ -79,7 +79,7 @@ class homePage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(25),
                   border: Border.all(color: Colors.black),
                 ),
-                height: 125,
+                height: 135,
               )
             ],
           ),
