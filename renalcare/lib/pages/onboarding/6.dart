@@ -16,22 +16,25 @@ class Onboarding6 extends StatelessWidget {
               'Do you do Dialysis?',
               style: TextStyle(fontSize: 30),
             ),
+            SizedBox(width: 26),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Radio(
                       value: true,
                       groupValue: null,
                       onChanged: (value) {},
                     ),
-                    Text('Yes'),
+                      Text('Yes'),
                   ],
                 ),
-                SizedBox(width: 16), // Add some spacing between the columns
+                SizedBox(width: 26), // Add some spacing between the columns
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Radio(
                       value: false,
