@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 // firebase
 import 'package:firebase_core/firebase_core.dart';
 import 'package:renalcare/input.dart';
+import 'package:renalcare/pages/onboarding/4.dart';
+import 'package:renalcare/pages/splashscreen/1.dart';
+import 'package:renalcare/test.dart';
 import 'firebase_options.dart';
 import 'package:get/get.dart';
 import 'pages/graph/bar_chart.dart';
 
 // pages
-import 'package:renalcare/pages/testpage.dart';
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: TextFieldPage(),
+      home: splashScreen(),
     );
   }
 }

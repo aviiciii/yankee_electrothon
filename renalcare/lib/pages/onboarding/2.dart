@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:renalcare/pages/onboarding/3.dart';
 
-class OnboardingUserDetail2 extends StatelessWidget {
-  const OnboardingUserDetail2({super.key});
+class OnboardingUserDetail2 extends StatefulWidget {
+  const OnboardingUserDetail2({Key? key}) : super(key: key);
+
+  @override
+  _OnboardingUserDetail2State createState() => _OnboardingUserDetail2State();
+}
+
+class _OnboardingUserDetail2State extends State<OnboardingUserDetail2> {
+  int? selectedOption; // Track the selected option, null means no selection
 
   @override
   Widget build(BuildContext context) {
@@ -20,68 +27,67 @@ class OnboardingUserDetail2 extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            TextButton(
-              onPressed: () {
-                // Add your logic here
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Checkbox(
-                    value: false,
-                    onChanged: (value) {
-                      // Add your logic here
-                    },
-                  ),
-                  const Text(
-                    'YES',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Radio<int>(
+                      value: 1, // Value for "YES"
+                      groupValue: selectedOption,
+                      onChanged: (value) {
+                        setState(() {
+                          selectedOption = value;
+                        });
+                      },
                     ),
-                  ),
-                ],
-              ),
+                    const Text(
+                      'YES',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Radio<int>(
+                      value: 2, // Value for "NO"
+                      groupValue: selectedOption,
+                      onChanged: (value) {
+                        setState(() {
+                          selectedOption = value;
+                        });
+                      },
+                    ),
+                    const Text(
+                      'NO',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
             const SizedBox(height: 8),
-            TextButton(
-              onPressed: () {
-                // Add your logic here
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Checkbox(
-                    value: false,
-                    onChanged: (value) {
-                      // Add your logic here
-                    },
-                  ),
-                  const Text(
-                    'NO',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 8),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 ElevatedButton(
-                  onPressed: () {
-                    Get.to(OnboardingUserDetail3());
-                  },
+                  onPressed: selectedOption != null
+                      ? () {
+                          Get.to(OnboardingUserDetail3());
+                        }
+                      : null, // Disable the button if no option is selected
                   child: Icon(Icons.arrow_forward_outlined),
                 ),
                 SizedBox(width: 40)
               ],
-            )
-            // Add more checklist items as needed
+            ),
           ],
         ),
       ),
