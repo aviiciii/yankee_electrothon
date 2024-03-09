@@ -39,9 +39,9 @@ Widget userListView(){
           itemCount: userDetails.length,
           itemBuilder: (context, index){
             return ListTile(
-              title: Text(userDetails[0]['email']),
-              subtitle: Text(userDetails[0]['phone']),
-              trailing: Text(userDetails[0].id),
+              title: Text(userDetails[index]['email']),
+              subtitle: Text(userDetails[index]['phone']),
+              trailing: Text(userDetails[index]['uid']),
                  // print id of the document
 
             );

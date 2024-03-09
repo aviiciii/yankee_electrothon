@@ -1,34 +1,34 @@
 class UserDetails{
   final String ?id;
-  final String name;
   final String email;
   final String phone;
+  final String uid;
 
   
   const UserDetails(
-    {this.id, required this.name,required this.email,required this.phone}
+    {this.id, required this.email,required this.phone,required this.uid}
   );
 
   UserDetails.fromJson(Map<String, dynamic> data): 
     id = data['id'],
-    name = data['name'],
     email = data['email'],
-    phone = data['phone'];
+    phone = data['phone'],
+    uid = data['uid'];
 
-  UserDetails copyWith({String ?id, String ?name, String ?email, String ?phone}){
+  UserDetails copyWith({String ?id, String ?email, String ?phone, String ?uid}){
     return UserDetails(
       id: id ?? this.id,
-      name: name ?? this.name,
       email: email ?? this.email,
       phone: phone ?? this.phone,
+      uid: uid ?? this.uid,
     );
   }
 
   Map<String, dynamic> toJson(){
     return {
-      'name': name,
       'email': email,
       'phone': phone,
+      'uid': uid,
     };
   }
 
