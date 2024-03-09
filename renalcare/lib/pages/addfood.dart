@@ -2,29 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:renalcare/services/food_log_service.dart';
 
-
 class addFood extends StatefulWidget {
-  const addFood({super.key});
+  const addFood({Key? key}) : super(key: key);
 
   @override
   State<addFood> createState() => _addFoodState();
 }
 
 class _addFoodState extends State<addFood> {
-
-  final DatabaseService _databaseService = DatabaseService("ulix3a2rwO2qjIVAKmgM");
+  final DatabaseService _databaseService =
+      DatabaseService("ulix3a2rwO2qjIVAKmgM");
 
   var today = DateFormat('dd-MM-yyyy').format(DateTime.now());
 
   @override
-  Widget build(BuildContext context) {
+  void dispose() {
+    // _foodController.dispose();
+    super.dispose();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      
       body: Padding(
         padding: const EdgeInsets.all(15.0),
-        
-
         child: StreamBuilder(
           stream: _databaseService.get_food_logs(),
           builder: (context, snapshot) {
@@ -36,12 +37,8 @@ class _addFoodState extends State<addFood> {
               return CircularProgressIndicator();
             }
 
-            
             List logs = snapshot.data?.docs ?? [];
 
-            print('rebuild' + today);
-
-            
             logs = logs.where((log) => log['date'] == today).toList();
 
             logs.sort((a, b) {
@@ -74,12 +71,82 @@ class _addFoodState extends State<addFood> {
                 ),
                 fooddate(),
                 if (logs.isEmpty) ...[
-                  Text('No food logs found'),
+                  Container(
+                    height: 180,
+                    padding: EdgeInsets.all(10),
+                    margin: EdgeInsets.only(bottom: 15),
+                    child: Container(
+                      height: 80,
+                      padding: EdgeInsets.all(10),
+                      margin: EdgeInsets.only(bottom: 15),
+                      // decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "BreakFast",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: Text('Add Food'),
+                                    content: TextField(
+                                      // controller: _foodController,
+                                      decoration: InputDecoration(
+                                        hintText: 'add food name',
+                                      ),
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          // Save button logic
+                                          // String newFood = _foodController.text;
+                                          // setState(() {
+                                          //   _food = newFood;
+                                          // });
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: Text('Save'),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          // Cancel button logic
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: Text('Cancel'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                            child: Container(
+                              width: 200,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(color: Colors.black)),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text("Add"),
+                                  Icon(Icons.add),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
-
-                for (var log in logs)
-                  foodcontainer(log['time'], log['food']),
-                
+                for (var log in logs) foodcontainer(log['time'], log['food']),
               ],
             );
           },
@@ -91,7 +158,9 @@ class _addFoodState extends State<addFood> {
   Container foodcontainer(String _foodtype, String _food) {
     return Container(
       height: 80,
-      decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+      padding: EdgeInsets.all(10),
+      margin: EdgeInsets.only(bottom: 15),
+      // decoration: BoxDecoration(border: Border.all(color: Colors.black)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -106,8 +175,49 @@ class _addFoodState extends State<addFood> {
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: Colors.black)),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [Text(_food), Icon(Icons.edit)],
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(_food),
+                GestureDetector(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('Edit Food'),
+                          content: TextField(
+                            // controller: _foodController,
+                            decoration: InputDecoration(
+                              hintText: 'Enter food name',
+                            ),
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                // Save button logic
+                                // String newFood = _foodController.text;
+                                // setState(() {
+                                //   _food = newFood;
+                                // });
+                                Navigator.of(context).pop();
+                              },
+                              child: Text('Save'),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                // Cancel button logic
+                                Navigator.of(context).pop();
+                              },
+                              child: Text('Cancel'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  child: Icon(Icons.edit),
+                ),
+              ],
             ),
           )
         ],
@@ -122,7 +232,8 @@ class _addFoodState extends State<addFood> {
         ElevatedButton(
           onPressed: () {
             DateTime old_date = new DateFormat('dd-MM-yyyy').parse(today);
-            String new_date = DateFormat('dd-MM-yyyy').format(old_date.subtract(Duration(days: 1)));
+            String new_date = DateFormat('dd-MM-yyyy')
+                .format(old_date.subtract(Duration(days: 1)));
             print(new_date);
             today = new_date;
             setState(() {
@@ -138,12 +249,12 @@ class _addFoodState extends State<addFood> {
         ElevatedButton(
           onPressed: () {
             DateTime old_date = new DateFormat('dd-MM-yyyy').parse(today);
-            String new_date = DateFormat('dd-MM-yyyy').format(old_date.add(Duration(days: 1)));
+            String new_date = DateFormat('dd-MM-yyyy')
+                .format(old_date.add(Duration(days: 1)));
             today = new_date;
             setState(() {
               today = new_date;
             });
-            
           },
           child: Icon(Icons.arrow_forward_ios_outlined),
         ),
