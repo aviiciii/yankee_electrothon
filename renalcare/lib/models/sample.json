@@ -4,7 +4,7 @@
     "phone": "134t43545",
     "ckd level": "3",
     "dialysis": "yes",
-    "age": "25",
+    "dob": "11/11/1999",
     "diabetes": "yes",
     "blood_pressure": "yes",
     "dialysis_details":{
@@ -25,12 +25,12 @@
         {
             "food": "001",
             "date": "12/12/2019",
-            "time": "12:00"
+            "time": "breakfast"
         },
         {
-            "food": "001",
+            "food": "002",
             "date": "12/12/2019",
-            "time": "12:00"
+            "time": "dinner"
         }
     ]
 }
