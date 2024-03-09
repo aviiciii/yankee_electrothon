@@ -44,8 +44,31 @@ class _addFoodState extends State<addFood> {
 
             print('rebuild' + today);
 
-            // get today logs
+            
             logs = logs.where((log) => log['date'] == today).toList();
+
+            logs.sort((a, b) {
+              // Extract the time from the logs
+              var timeA = a['time'].toLowerCase();
+              var timeB = b['time'].toLowerCase();
+
+              // Compare the time values
+              if (timeA == 'breakfast') {
+                return -1;
+              } else if (timeB == 'breakfast') {
+                return 1;
+              } else if (timeA == 'lunch') {
+                return -1;
+              } else if (timeB == 'lunch') {
+                return 1;
+              } else if (timeA == 'dinner') {
+                return -1;
+              } else if (timeB == 'dinner') {
+                return 1;
+              } else {
+                return 0;
+              }
+            });
 
             return ListView(
               children: [
@@ -53,9 +76,13 @@ class _addFoodState extends State<addFood> {
                   height: 15,
                 ),
                 fooddate(),
+                if (logs.isEmpty) ...[
+                  Text('No food logs found'),
+                ],
+
                 for (var log in logs)
-                  foodcontainer(log['food'], log['time']),
-                foodcontainer("Lunch", "Roti"),
+                  foodcontainer(log['time'], log['food']),
+                
               ],
             );
           },
