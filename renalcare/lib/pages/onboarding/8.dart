@@ -3,14 +3,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:renalcare/pages/profile.dart';
 
-class OnboardingUserDetail6 extends StatefulWidget {
-  const OnboardingUserDetail6({Key? key}) : super(key: key);
+class OnboardingUserDetail8 extends StatefulWidget {
+  const OnboardingUserDetail8({Key? key}) : super(key: key);
 
   @override
-  State<OnboardingUserDetail6> createState() => _OnboardingUserDetail6State();
+  State<OnboardingUserDetail8> createState() => _OnboardingUserDetail8State();
 }
 
-class _OnboardingUserDetail6State extends State<OnboardingUserDetail6> {
+class _OnboardingUserDetail8State extends State<OnboardingUserDetail8> {
   late DateTime selectedDate; // Changed to late initialization
 
   @override

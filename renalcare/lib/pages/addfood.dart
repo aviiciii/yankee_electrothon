@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:renalcare/services/food_log_service.dart';
-import 'package:renalcare/widgets/bottomnav.dart';
 
 class addFood extends StatefulWidget {
   const addFood({Key? key}) : super(key: key);
@@ -25,9 +24,7 @@ class _addFoodState extends State<addFood> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: bottomNav(),
       body: Padding(
-
         padding: const EdgeInsets.all(15.0),
         child: StreamBuilder(
           stream: _databaseService.get_food_logs(),
@@ -61,6 +58,11 @@ class _addFoodState extends State<addFood> {
                     (log) => log['time'] == 'Dinner' || log['time'] == 'dinner')
                 .map((log) => log['food'])
                 .toList();
+            List waters = logs
+                .where(
+                    (log) => log['time'] == 'Water' || log['time'] == 'water')
+                .map((log) => log['food'])
+                .toList();
 
             return ListView(
               children: [
@@ -71,81 +73,6 @@ class _addFoodState extends State<addFood> {
                 SizedBox(
                   height: 45,
                 ),
-                // if (logs.isEmpty) ...[
-                //   Container(
-                //     height: 180,
-                //     padding: EdgeInsets.all(10),
-                //     margin: EdgeInsets.only(bottom: 15),
-                //     child: Container(
-                //       height: 80,
-                //       padding: EdgeInsets.all(10),
-                //       margin: EdgeInsets.only(bottom: 15),
-                //       // decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-                //       child: Row(
-                //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //         children: [
-                //           Text(
-                //             "BreakFast",
-                //             style: TextStyle(
-                //                 fontSize: 20, fontWeight: FontWeight.bold),
-                //           ),
-                //           GestureDetector(
-                //             onTap: () {
-                //               showDialog(
-                //                 context: context,
-                //                 builder: (BuildContext context) {
-                //                   return AlertDialog(
-                //                     title: Text('Add Food'),
-                //                     content: TextField(
-                //                       // controller: _foodController,
-                //                       decoration: InputDecoration(
-                //                         hintText: 'add food name',
-                //                       ),
-                //                     ),
-                //                     actions: [
-                //                       TextButton(
-                //                         onPressed: () {
-                //                           // Save button logic
-                //                           // String newFood = _foodController.text;
-                //                           // setState(() {
-                //                           //   _food = newFood;
-                //                           // });
-                //                           Navigator.of(context).pop();
-                //                         },
-                //                         child: Text('Save'),
-                //                       ),
-                //                       TextButton(
-                //                         onPressed: () {
-                //                           // Cancel button logic
-                //                           Navigator.of(context).pop();
-                //                         },
-                //                         child: Text('Cancel'),
-                //                       ),
-                //                     ],
-                //                   );
-                //                 },
-                //               );
-                //             },
-                //             child: Container(
-                //               width: 160,
-                //               height: 50,
-                //               decoration: BoxDecoration(
-                //                   borderRadius: BorderRadius.circular(10),
-                //                   border: Border.all(color: Colors.black)),
-                //               child: Row(
-                //                 mainAxisAlignment: MainAxisAlignment.center,
-                //                 children: [
-                //                   Text("Add"),
-                //                   Icon(Icons.add),
-                //                 ],
-                //               ),
-                //             ),
-                //           ),
-                //         ],
-                //       ),
-                //     ),
-                //   ),
-                // ],
                 if (breakfasts.isEmpty) ...{
                   emptyFood('Breakfast'),
                 } else ...{
@@ -160,6 +87,11 @@ class _addFoodState extends State<addFood> {
                   emptyFood('Dinner'),
                 } else ...{
                   for (var log in dinners) foodcontainer('Dinner', log),
+                },
+                if (waters.isEmpty) ...{
+                  emptyFood('Water'),
+                } else ...{
+                  for (var log in waters) foodcontainer('Water', log),
                 },
               ],
             );
@@ -281,73 +213,67 @@ class _addFoodState extends State<addFood> {
       height: 80,
       padding: EdgeInsets.all(10),
       margin: EdgeInsets.only(bottom: 15),
-      child: Container(
-        height: 80,
-        padding: EdgeInsets.all(10),
-        margin: EdgeInsets.only(bottom: 15),
-        // decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              _time,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            GestureDetector(
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: Text('Add Food'),
-                      content: TextField(
-                        // controller: _foodController,
-                        decoration: InputDecoration(
-                          hintText: 'add food name',
-                        ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            _time,
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          GestureDetector(
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text('Add Food'),
+                    content: TextField(
+                      // controller: _foodController,
+                      decoration: InputDecoration(
+                        hintText: 'add food name',
                       ),
-                      actions: [
-                        TextButton(
-                          onPressed: () {
-                            // Save button logic
-                            // String newFood = _foodController.text;
-                            // setState(() {
-                            //   _food = newFood;
-                            // });
-                            Navigator.of(context).pop();
-                          },
-                          child: Text('Save'),
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            // Cancel button logic
-                            Navigator.of(context).pop();
-                          },
-                          child: Text('Cancel'),
-                        ),
-                      ],
-                    );
-                  },
-                );
-              },
-              child: Container(
-                width: 120,
-                height: 50,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.blue,
-                    border: Border.all(color: Colors.black)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Add"),
-                    Icon(Icons.add),
-                  ],
-                ),
+                    ),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          // Save button logic
+                          // String newFood = _foodController.text;
+                          // setState(() {
+                          //   _food = newFood;
+                          // });
+                          Navigator.of(context).pop();
+                        },
+                        child: Text('Save'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          // Cancel button logic
+                          Navigator.of(context).pop();
+                        },
+                        child: Text('Cancel'),
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
+            child: Container(
+              width: 200,
+              height: 50,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.blue,
+                  border: Border.all(color: Colors.black)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Add"),
+                  Icon(Icons.add),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

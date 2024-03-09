@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:renalcare/pages/onboarding/6.dart';
+import 'package:renalcare/pages/onboarding/8.dart';
 import 'package:renalcare/pages/profile.dart';
 
 class OnboardingUserDetail5 extends StatefulWidget {
