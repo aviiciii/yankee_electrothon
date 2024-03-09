@@ -41,28 +41,23 @@ class _addFoodState extends State<addFood> {
 
             logs = logs.where((log) => log['date'] == today).toList();
 
-            logs.sort((a, b) {
-              // Extract the time from the logs
-              var timeA = a['time'].toLowerCase();
-              var timeB = b['time'].toLowerCase();
+            List breakfasts = logs
+                .where((log) =>
+                    log['time'] == 'Breakfast' || log['time'] == 'breakfast')
+                .map((log) => log['food'])
+                .toList();
 
-              // Compare the time values
-              if (timeA == 'breakfast') {
-                return -1;
-              } else if (timeB == 'breakfast') {
-                return 1;
-              } else if (timeA == 'lunch') {
-                return -1;
-              } else if (timeB == 'lunch') {
-                return 1;
-              } else if (timeA == 'dinner') {
-                return -1;
-              } else if (timeB == 'dinner') {
-                return 1;
-              } else {
-                return 0;
-              }
-            });
+            List lunches = logs
+                .where(
+                    (log) => log['time'] == 'Lunch' || log['time'] == 'lunch')
+                .map((log) => log['food'])
+                .toList();
+
+            List dinners = logs
+                .where(
+                    (log) => log['time'] == 'Dinner' || log['time'] == 'dinner')
+                .map((log) => log['food'])
+                .toList();
 
             return ListView(
               children: [
@@ -70,83 +65,99 @@ class _addFoodState extends State<addFood> {
                   height: 15,
                 ),
                 fooddate(),
-                if (logs.isEmpty) ...[
-                  Container(
-                    height: 180,
-                    padding: EdgeInsets.all(10),
-                    margin: EdgeInsets.only(bottom: 15),
-                    child: Container(
-                      height: 80,
-                      padding: EdgeInsets.all(10),
-                      margin: EdgeInsets.only(bottom: 15),
-                      // decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "BreakFast",
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return AlertDialog(
-                                    title: Text('Add Food'),
-                                    content: TextField(
-                                      // controller: _foodController,
-                                      decoration: InputDecoration(
-                                        hintText: 'add food name',
-                                      ),
-                                    ),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () {
-                                          // Save button logic
-                                          // String newFood = _foodController.text;
-                                          // setState(() {
-                                          //   _food = newFood;
-                                          // });
-                                          Navigator.of(context).pop();
-                                        },
-                                        child: Text('Save'),
-                                      ),
-                                      TextButton(
-                                        onPressed: () {
-                                          // Cancel button logic
-                                          Navigator.of(context).pop();
-                                        },
-                                        child: Text('Cancel'),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
-                            },
-                            child: Container(
-                              width: 200,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  border: Border.all(color: Colors.black)),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Text("Add"),
-                                  Icon(Icons.add),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-                for (var log in logs) foodcontainer(log['time'], log['food']),
+                SizedBox(
+                  height: 45,
+                ),
+                // if (logs.isEmpty) ...[
+                //   Container(
+                //     height: 180,
+                //     padding: EdgeInsets.all(10),
+                //     margin: EdgeInsets.only(bottom: 15),
+                //     child: Container(
+                //       height: 80,
+                //       padding: EdgeInsets.all(10),
+                //       margin: EdgeInsets.only(bottom: 15),
+                //       // decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+                //       child: Row(
+                //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //         children: [
+                //           Text(
+                //             "BreakFast",
+                //             style: TextStyle(
+                //                 fontSize: 20, fontWeight: FontWeight.bold),
+                //           ),
+                //           GestureDetector(
+                //             onTap: () {
+                //               showDialog(
+                //                 context: context,
+                //                 builder: (BuildContext context) {
+                //                   return AlertDialog(
+                //                     title: Text('Add Food'),
+                //                     content: TextField(
+                //                       // controller: _foodController,
+                //                       decoration: InputDecoration(
+                //                         hintText: 'add food name',
+                //                       ),
+                //                     ),
+                //                     actions: [
+                //                       TextButton(
+                //                         onPressed: () {
+                //                           // Save button logic
+                //                           // String newFood = _foodController.text;
+                //                           // setState(() {
+                //                           //   _food = newFood;
+                //                           // });
+                //                           Navigator.of(context).pop();
+                //                         },
+                //                         child: Text('Save'),
+                //                       ),
+                //                       TextButton(
+                //                         onPressed: () {
+                //                           // Cancel button logic
+                //                           Navigator.of(context).pop();
+                //                         },
+                //                         child: Text('Cancel'),
+                //                       ),
+                //                     ],
+                //                   );
+                //                 },
+                //               );
+                //             },
+                //             child: Container(
+                //               width: 160,
+                //               height: 50,
+                //               decoration: BoxDecoration(
+                //                   borderRadius: BorderRadius.circular(10),
+                //                   border: Border.all(color: Colors.black)),
+                //               child: Row(
+                //                 mainAxisAlignment: MainAxisAlignment.center,
+                //                 children: [
+                //                   Text("Add"),
+                //                   Icon(Icons.add),
+                //                 ],
+                //               ),
+                //             ),
+                //           ),
+                //         ],
+                //       ),
+                //     ),
+                //   ),
+                // ],
+                if (breakfasts.isEmpty) ...{
+                  emptyFood('Breakfast'),
+                } else ...{
+                  for (var log in breakfasts) foodcontainer('Breakfast', log),
+                },
+                if (lunches.isEmpty) ...{
+                  emptyFood('Lunch'),
+                } else ...{
+                  for (var log in lunches) foodcontainer('Lunch', log),
+                },
+                if (dinners.isEmpty) ...{
+                  emptyFood('Dinner'),
+                } else ...{
+                  for (var log in dinners) foodcontainer('Dinner', log),
+                },
               ],
             );
           },
@@ -259,6 +270,82 @@ class _addFoodState extends State<addFood> {
           child: Icon(Icons.arrow_forward_ios_outlined),
         ),
       ],
+    );
+  }
+
+  Container emptyFood(String _time) {
+    return Container(
+      height: 80,
+      padding: EdgeInsets.all(10),
+      margin: EdgeInsets.only(bottom: 15),
+      child: Container(
+        height: 80,
+        padding: EdgeInsets.all(10),
+        margin: EdgeInsets.only(bottom: 15),
+        // decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              _time,
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            GestureDetector(
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text('Add Food'),
+                      content: TextField(
+                        // controller: _foodController,
+                        decoration: InputDecoration(
+                          hintText: 'add food name',
+                        ),
+                      ),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            // Save button logic
+                            // String newFood = _foodController.text;
+                            // setState(() {
+                            //   _food = newFood;
+                            // });
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('Save'),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            // Cancel button logic
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('Cancel'),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              child: Container(
+                width: 120,
+                height: 50,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.blue,
+                    border: Border.all(color: Colors.black)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Add"),
+                    Icon(Icons.add),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
