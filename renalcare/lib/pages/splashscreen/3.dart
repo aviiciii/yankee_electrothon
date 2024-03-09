@@ -28,67 +28,69 @@ class splashScreen3 extends StatelessWidget {
                 // bottomRight: Radius.circular(40.0),
               ),
             ),
-            child: Column(
-              children: [
-                const Text("Features",
-                    style:
-                        TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-
-                const SizedBox(
-                  height: 50,
-                ),
-
-                //features points
-                Text('• Feature 1'),
-                SizedBox(
-                  height: 10,
-                ),
-                Text('• Feature 2'),
-                SizedBox(
-                  height: 10,
-                ),
-                Text('• Feature 3'),
-                SizedBox(
-                  height: 10,
-                ),
-                Text('• Feature 4'),
-                SizedBox(
-                  height: 10,
-                ),
-                Text('• Feature 5'),
-                SizedBox(
-                  height: 50,
-                ),
-                
-                
-
-                //Row of button
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {},
-                      child: const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text('Skip'),
+            child: Padding(
+              padding: const EdgeInsets.all(40.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  
+                  const Text("Features",
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold,)),
+                  const SizedBox(height: 50,),
+              
+                  //features points
+                  Text('• Personalized diet plans for CKD levels'),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text('• Progress tracking charts'),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text('• Community forum for support'),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text('• Weekly food recipes'),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text('• Customizable recipes based on user preferences '),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  
+                  
+              
+                  //Row of button
+              
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text('Skip'),
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      width: 30,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        Get.to(const login());
-                      },
-                      child: const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text('Next'),
+                      const SizedBox(
+                        width: 30,
                       ),
-                    ),
-                  ],
-                )
-              ],
+                      ElevatedButton(
+                        onPressed: () {
+                          Get.to(const login());
+                        },
+                        child: const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text('Next'),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ],
