@@ -11,11 +11,17 @@ class addFood extends StatefulWidget {
 }
 
 class _addFoodState extends State<addFood> {
+
+  final DatabaseService _databaseService = DatabaseService("ulix3a2rwO2qjIVAKmgM");
+
+  var today = DateFormat('dd-MM-yyyy').format(DateTime.now());
+
+
+
   @override
   Widget build(BuildContext context) {
-    final DatabaseService _databaseService = DatabaseService("ulix3a2rwO2qjIVAKmgM");
 
-    String today = DateFormat('dd-MM-yyyy').format(DateTime.now());
+    
 
     return Scaffold(
       body: Padding(
@@ -33,23 +39,20 @@ class _addFoodState extends State<addFood> {
               return CircularProgressIndicator();
             }
 
+            
             List logs = snapshot.data?.docs ?? [];
+
+            print('rebuild' + today);
 
             // get today logs
             logs = logs.where((log) => log['date'] == today).toList();
-
-            if (logs.isEmpty) {
-              return const Center(
-                child: Text('No users found'),
-              );
-            }
 
             return ListView(
               children: [
                 SizedBox(
                   height: 15,
                 ),
-                fooddate(today),
+                fooddate(),
                 for (var log in logs)
                   foodcontainer(log['food'], log['time']),
                 foodcontainer("Lunch", "Roti"),
@@ -88,20 +91,36 @@ class _addFoodState extends State<addFood> {
     );
   }
 
-  Row fooddate(String _date) {
+  Row fooddate() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            DateTime old_date = new DateFormat('dd-MM-yyyy').parse(today);
+            String new_date = DateFormat('dd-MM-yyyy').format(old_date.subtract(Duration(days: 1)));
+            print(new_date);
+            today = new_date;
+            setState(() {
+              today = new_date;
+            });
+          },
           child: Icon(Icons.arrow_back_ios_new_outlined),
         ),
         Text(
-          _date,
+          today,
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            DateTime old_date = new DateFormat('dd-MM-yyyy').parse(today);
+            String new_date = DateFormat('dd-MM-yyyy').format(old_date.add(Duration(days: 1)));
+            today = new_date;
+            setState(() {
+              today = new_date;
+            });
+            
+          },
           child: Icon(Icons.arrow_forward_ios_outlined),
         ),
       ],
