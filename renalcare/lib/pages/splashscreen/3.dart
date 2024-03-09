@@ -39,7 +39,7 @@ class splashScreen3 extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       )),
                   const SizedBox(
-                    height: 50,
+                    height: 20,
                   ),
 
                   //features points
@@ -61,7 +61,7 @@ class splashScreen3 extends StatelessWidget {
                   ),
                   Text('• Customizable recipes based on user preferences '),
                   SizedBox(
-                    height: 35,
+                    height: 20,
                   ),
 
                   //Row of button
