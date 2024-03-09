@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 import 'package:renalcare/pages/onboarding/3.dart';
 
 class OnboardingUserDetail2 extends StatefulWidget {
-  const OnboardingUserDetail2({Key? key}) : super(key: key);
+  final int? selectedDialysisOption; // Corrected parameter name
+
+  const OnboardingUserDetail2(int i, {Key? key, this.selectedDialysisOption}) : super(key: key);
 
   @override
   _OnboardingUserDetail2State createState() => _OnboardingUserDetail2State();
@@ -80,9 +82,11 @@ class _OnboardingUserDetail2State extends State<OnboardingUserDetail2> {
                 ElevatedButton(
                   onPressed: selectedOption != null
                       ? () {
-                          Get.to(OnboardingUserDetail3());
+                          Get.to(OnboardingUserDetail3(
+                            selectedDialysisOption: selectedOption, // Pass the selected option
+                          ));
                         }
-                      : null, // Disable the button if no option is selected
+                      : null,
                   child: Icon(Icons.arrow_forward_outlined),
                 ),
                 SizedBox(width: 40)

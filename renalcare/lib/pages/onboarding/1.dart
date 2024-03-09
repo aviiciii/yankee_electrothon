@@ -11,7 +11,7 @@ class OnboardingUserDetail1 extends StatefulWidget {
 }
 
 class _OnboardingUserDetail1State extends State<OnboardingUserDetail1> {
-  int selectedStage = -1; // Track the selected stage, -1 means no selection
+  int? selectedStage; // Track the selected stage, null means no selection
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class _OnboardingUserDetail1State extends State<OnboardingUserDetail1> {
                 groupValue: selectedStage,
                 onChanged: (value) {
                   setState(() {
-                    selectedStage = value!;
+                    selectedStage = value;
                   });
                 },
               ),
@@ -46,9 +46,10 @@ class _OnboardingUserDetail1State extends State<OnboardingUserDetail1> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 ElevatedButton(
-                  onPressed: selectedStage != -1
+                  onPressed: selectedStage != null
                       ? () {
-                          Get.to(OnboardingUserDetail2());
+                          // Navigate to the next page when a stage is selected
+                          Get.to(OnboardingUserDetail2(selectedStage!));
                         }
                       : null, // Disable the button if no stage is selected
                   child: Icon(Icons.arrow_forward_outlined),

@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 import 'package:renalcare/pages/onboarding/4.dart';
 
 class OnboardingUserDetail3 extends StatefulWidget {
-  const OnboardingUserDetail3({Key? key}) : super(key: key);
+  final int? selectedBloodPressureOption; // Corrected parameter name
+
+  const OnboardingUserDetail3({Key? key, this.selectedBloodPressureOption, int? selectedDialysisOption}) : super(key: key);
 
   @override
   _OnboardingUserDetail3State createState() => _OnboardingUserDetail3State();
@@ -78,10 +80,22 @@ class _OnboardingUserDetail3State extends State<OnboardingUserDetail3> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                ElevatedButton(
+               ElevatedButton(
+  onPressed: selectedOption != null
+      ? () {
+          Get.to(OnboardingUserDetail4(
+            selectedDiabetesOption: selectedOption, // Pass the selected option
+          ));
+        }
+      : null, // Disable the button if no option is selected
+  child: Icon(Icons.arrow_forward_outlined),
+),
+ ElevatedButton(
                   onPressed: selectedOption != null
                       ? () {
-                          Get.to(OnboardingUserDetail4());
+                          Get.to(OnboardingUserDetail4(
+                            selectedBloodPressureOption: selectedOption, // Pass the selected option
+                          ));
                         }
                       : null, // Disable the button if no option is selected
                   child: Icon(Icons.arrow_forward_outlined),

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:renalcare/pages/discover.dart';
 import 'package:renalcare/pages/homepage.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class OnboardingUserDetail4 extends StatefulWidget {
-  const OnboardingUserDetail4({Key? key}) : super(key: key);
+  final int? selectedDiabetesOption; // Corrected parameter name
+
+  const OnboardingUserDetail4({Key? key, this.selectedDiabetesOption, int? selectedBloodPressureOption}) : super(key: key);
 
   @override
   _OnboardingUserDetail4State createState() => _OnboardingUserDetail4State();
@@ -82,6 +85,9 @@ class _OnboardingUserDetail4State extends State<OnboardingUserDetail4> {
                 ElevatedButton(
                   onPressed: selectedOption != null
                       ? () {
+                          // Store user data in Firebase
+                          _storeUserData(selectedOption!);
+                          // Navigate to the homepage
                           Get.to(homePage());
                         }
                       : null, // Disable the button if no option is selected
@@ -94,5 +100,20 @@ class _OnboardingUserDetail4State extends State<OnboardingUserDetail4> {
         ),
       ),
     );
+  }
+
+  // Function to store user data in Firebase
+  void _storeUserData(int selectedOption) async {
+    try {
+      await Firebase.initializeApp();
+      // Access Firestore and add the user data to a collection
+      await FirebaseFirestore.instance.collection('user_data').add({
+        'hasDiabetes': selectedOption == 1, // Convert radio button value to boolean
+        'timestamp': DateTime.now(), // Optional: Add a timestamp
+      });
+      print('User data stored successfully.');
+    } catch (e) {
+      print('Error storing user data: $e');
+    }
   }
 }
