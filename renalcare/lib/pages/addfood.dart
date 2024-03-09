@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:renalcare/services/food_log_service.dart';
+import 'package:renalcare/widgets/bottomnav.dart';
 
 class addFood extends StatefulWidget {
   const addFood({Key? key}) : super(key: key);
@@ -24,6 +25,7 @@ class _addFoodState extends State<addFood> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: bottomNav(),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: StreamBuilder(

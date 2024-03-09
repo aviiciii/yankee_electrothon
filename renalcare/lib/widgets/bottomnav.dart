@@ -14,12 +14,27 @@ class bottomNav extends StatefulWidget {
 }
 
 class _bottomNavState extends State<bottomNav> {
-   int _selectedIndex = 0 ;
-   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  int _selectedIndex = 0;
+  final screens = [
+    const homePage(),
+    const discover(),
+    const addFood(),
+    const myGraph(),
+    const profile(),
+  ];
+
+  // List<Widget> body = [
+  //   Icon(Icons.home),
+  //   Icon(Icons.search),
+  //   Icon(Icons.add),
+  //   Icon(Icons.cyclone_sharp),
+  //   Icon(Icons.person),
+  // ];
+  //  void _onItemTapped(int index) {
+  //   setState(() {
+  //     _selectedIndex = index;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -64,8 +79,11 @@ class _bottomNavState extends State<bottomNav> {
               label: 'Profile',
             ),
           ],
-          onTap: (index) {
-            _onItemTapped(index);
+          onTap: (int index) {
+            setState(() {
+              _selectedIndex = index;
+              changeTab(index);
+            });
             _handleNavigation(context, _selectedIndex);
           },
         ),
@@ -74,26 +92,31 @@ class _bottomNavState extends State<bottomNav> {
   }
 
   void _handleNavigation(BuildContext context, int index) {
-  setState(() {
-    _selectedIndex = index; // Update the selected index
-  });
+    setState(() {
+      _selectedIndex = index; // Update the selected index
+    });
 
-  switch (index) {
-    case 0:
-      Get.offAll(() => homePage()); // Use Get.offAll() for replacing the current route
-      break;
-    case 1:
-      Get.offAll(() => discover());
-      break;
-    case 2:
-      Get.offAll(() => addFood());
-      break;
-    case 3:
-      Get.offAll(() => myGraph());
-      break;
-    case 4:
-      Get.offAll(() => profile());
-      break;
+    switch (index) {
+      case 0:
+        Get.to(() =>
+            homePage()); // Use Get.offAll() for replacing the current route
+        break;
+      case 1:
+        Get.to(() => discover());
+        break;
+      case 2:
+        Get.to(() => addFood());
+        break;
+      case 3:
+        Get.to(() => myGraph());
+        break;
+      case 4:
+        Get.to(() => profile());
+        break;
+    }
   }
-}
+
+  void changeTab(int index) {
+    setState(() => _selectedIndex = index);
+  }
 }

@@ -27,9 +27,9 @@ class _OnboardingUserDetail5State extends State<OnboardingUserDetail5> {
         print('Birthdate updated successfully.');
 
         // Navigate to the profile page
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => OnboardingUserDetail6()),
-        );
+        // Navigator.of(context).pushReplacement(
+        //   MaterialPageRoute(builder: (context) => ()),
+        // );
       } else {
         print('User not authenticated.');
       }
