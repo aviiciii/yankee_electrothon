@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:renalcare/pages/onboarding/2.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 
 class OnboardingUserDetail1 extends StatefulWidget {
@@ -85,9 +87,13 @@ class _OnboardingUserDetail1State extends State<OnboardingUserDetail1> {
     User? user = FirebaseAuth.instance.currentUser;
     if (user != null && selectedCkdLevel != null) {
       try {
+        // get uid from shared preferences
+        User? user = FirebaseAuth.instance.currentUser;
+
+
+        
         // Update the user details in Firestore
-        await userDetailsCollection.doc(user.uid).set({
-          
+        await userDetailsCollection.doc(user?.uid).set({
           'selectedCkdLevel': selectedCkdLevel,
           // Other user details...
         });

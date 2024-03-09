@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:renalcare/pages/onboarding/3.dart';
+import 'package:renalcare/pages/onboarding/3.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboardingUserDetail2 extends StatefulWidget {
   const OnboardingUserDetail2({Key? key}) : super(key: key);
@@ -86,22 +87,17 @@ class _OnboardingUserDetail2State extends State<OnboardingUserDetail2> {
                 ElevatedButton(
   onPressed: selectedOption != null
       ? () async {
-          // Get the current user
           User? user = FirebaseAuth.instance.currentUser;
 
-          if (user != null) {
-            // Store the dialysis status along with the user ID in Firestore
-            await userDetailsCollection.doc(user.uid).set({
-              'userId': user.uid,
-              'isDialysis': selectedOption == 1, // true if selectedOption is 1
-            });
+        
+          // Store the dialysis status along with the user ID in Firestore
+          await userDetailsCollection.doc(user?.uid).update({
+            'isDialysis': selectedOption == 1, // true if selectedOption is 1
+          });
 
             // Navigate to the next page
-            // Get.to(OnboardingUserDetail3());
-          } else {
-            // Handle the case where the user is not signed in
-            print('User is not signed in.');
-          }
+          Get.to(OnboardingUserDetail3());
+          
         }
       : null,
   child: Icon(Icons.arrow_forward_outlined),
