@@ -7,75 +7,75 @@ import 'package:renalcare/pages/homepage.dart';
 import 'package:renalcare/pages/profile.dart';
 
 class bottomNav extends StatefulWidget {
-  const bottomNav({super.key});
+  const bottomNav({Key? key}) : super(key: key);
 
   @override
   State<bottomNav> createState() => _bottomNavState();
 }
 
 class _bottomNavState extends State<bottomNav> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+
+    _handleNavigation(context, index);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-              topRight: Radius.circular(30), topLeft: Radius.circular(30)),
-          boxShadow: [
-            BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 10),
-          ],
+    return BottomNavigationBar(
+      currentIndex: _selectedIndex,
+      onTap: _onItemTapped,
+      items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Home',
         ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30.0),
-            topRight: Radius.circular(30.0),
-          ),
-          child: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.search),
-                label: 'Discover',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.add),
-                label: 'Add Today\'s Diet',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.cyclone_sharp),
-                label: 'Dialysis cycle',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                label: 'Profile',
-              ),
-            ],
-            onTap: (index) {
-              _handleNavigation(context, index);
-            },
-          ),
-        ));
+        BottomNavigationBarItem(
+          icon: Icon(Icons.search),
+          label: 'Discover',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.add),
+          label: 'Add Food',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.graphic_eq),
+          label: 'Graph',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          label: 'Profile',
+        ),
+      ],
+      selectedItemColor: Colors.blue, // Change the selected item color here
+    );
   }
 
   void _handleNavigation(BuildContext context, int index) {
+    setState(() {
+      _selectedIndex = index; // Update the selected index
+    });
+
     switch (index) {
       case 0:
-        Get.to(homePage());
+        Get.offAll(() => homePage()); // Use Get.offAll() for replacing the current route
         break;
       case 1:
-        Get.to(discover());
+        Get.offAll(() => discover());
         break;
       case 2:
-        Get.to(addFood());
+        Get.offAll(() => addFood());
         break;
       case 3:
-        Get.to(myGraph());
+        Get.offAll(() => myGraph());
         break;
       case 4:
-        Get.to(profile());
+        Get.offAll(() => profile());
+        break;
     }
   }
 }
