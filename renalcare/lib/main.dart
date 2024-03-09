@@ -8,6 +8,7 @@ import 'package:renalcare/pages/homepage.dart';
 import 'package:renalcare/pages/onboarding/1.dart';
 import 'package:renalcare/pages/onboarding/5.dart';
 import 'package:renalcare/pages/onboarding/6.dart';
+import 'package:renalcare/pages/settings.dart';
 import 'package:renalcare/test2.dart';
 
 import 'firebase_options.dart';
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: splashScreen(), // Replace this line with the correct function call or define the function
+      home: settings(), // Replace this line with the correct function call or define the function
     );
   }
 }
