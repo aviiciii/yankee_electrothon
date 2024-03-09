@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:renalcare/pages/homepage.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class OnboardingUserDetail4 extends StatefulWidget {
   final int? selectedDiabetesOption; // Corrected parameter name
 
-  const OnboardingUserDetail4({Key? key, this.selectedDiabetesOption, int? selectedBloodPressureOption}) : super(key: key);
+  const OnboardingUserDetail4({Key? key, this.selectedDiabetesOption}) : super(key: key);
 
   @override
   _OnboardingUserDetail4State createState() => _OnboardingUserDetail4State();
@@ -24,7 +26,7 @@ class _OnboardingUserDetail4State extends State<OnboardingUserDetail4> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Do you have \n Diabetes?',
+              'Do you have Diabetes?',
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -85,12 +87,12 @@ class _OnboardingUserDetail4State extends State<OnboardingUserDetail4> {
                 ElevatedButton(
                   onPressed: selectedOption != null
                       ? () {
-                          // Store user data in Firebase
+                          // Store user data in Firestore
                           _storeUserData(selectedOption!);
                           // Navigate to the homepage
                           Get.to(homePage());
                         }
-                      : null, // Disable the button if no option is selected
+                      : null,
                   child: Icon(Icons.arrow_forward_outlined),
                 ),
                 SizedBox(width: 40)
@@ -102,18 +104,25 @@ class _OnboardingUserDetail4State extends State<OnboardingUserDetail4> {
     );
   }
 
-  // Function to store user data in Firebase
+  // Function to store user data in Firestore
   void _storeUserData(int selectedOption) async {
-    try {
-      await Firebase.initializeApp();
-      // Access Firestore and add the user data to a collection
-      await FirebaseFirestore.instance.collection('user_data').add({
-        'hasDiabetes': selectedOption == 1, // Convert radio button value to boolean
-        'timestamp': DateTime.now(), // Optional: Add a timestamp
-      });
-      print('User data stored successfully.');
-    } catch (e) {
-      print('Error storing user data: $e');
-    }
+  try {
+      User? user = FirebaseAuth.instance.currentUser;
+
+    if (user != null) {
+      // Check if the document already exists for the user
+      final userDoc = FirebaseFirestore.instance.collection('UserDetails');
+       await userDoc.doc(user.uid).update({
+          'isDiabetic': selectedOption == 1,
+        });
+        print('User data stored successfully.');
+      }
+      
+     else {
+      print('User is not signed in.');
+     }
+  } catch (e) {
+    print('Error storing user data: $e');
   }
+}
 }

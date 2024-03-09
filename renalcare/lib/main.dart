@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 // firebase
 import 'package:firebase_core/firebase_core.dart';
+import 'package:renalcare/pages/addfood.dart';
 import 'package:renalcare/pages/homepage.dart';
 import 'package:renalcare/pages/onboarding/1.dart';
 import 'package:renalcare/pages/onboarding/5.dart';
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: OnboardingUserDetail5(),
+      home: splashScreen(),
     );
   }
 }

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:renalcare/pages/onboarding/3.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboardingUserDetail2 extends StatefulWidget {
-  final int? selectedDialysisOption; // Corrected parameter name
-
-  const OnboardingUserDetail2(int i, {Key? key, this.selectedDialysisOption}) : super(key: key);
+  const OnboardingUserDetail2({Key? key}) : super(key: key);
 
   @override
   _OnboardingUserDetail2State createState() => _OnboardingUserDetail2State();
@@ -13,6 +14,10 @@ class OnboardingUserDetail2 extends StatefulWidget {
 
 class _OnboardingUserDetail2State extends State<OnboardingUserDetail2> {
   int? selectedOption; // Track the selected option, null means no selection
+
+  // Reference to Firestore collection
+  final CollectionReference userDetailsCollection =
+      FirebaseFirestore.instance.collection('UserDetails');
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +27,7 @@ class _OnboardingUserDetail2State extends State<OnboardingUserDetail2> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Are you on \n Dialysis?',
+              'Are you on Dialysis?',
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -80,16 +85,25 @@ class _OnboardingUserDetail2State extends State<OnboardingUserDetail2> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 ElevatedButton(
-                  onPressed: selectedOption != null
-                      ? () {
-                          Get.to(OnboardingUserDetail3(
-                            selectedDialysisOption: selectedOption, // Pass the selected option
-                          ));
-                        }
-                      : null,
-                  child: Icon(Icons.arrow_forward_outlined),
-                ),
-                SizedBox(width: 40)
+  onPressed: selectedOption != null
+      ? () async {
+          User? user = FirebaseAuth.instance.currentUser;
+
+        
+          // Store the dialysis status along with the user ID in Firestore
+          await userDetailsCollection.doc(user?.uid).update({
+            'isDialysis': selectedOption == 1, // true if selectedOption is 1
+          });
+
+            // Navigate to the next page
+          Get.to(OnboardingUserDetail3());
+          
+        }
+      : null,
+  child: Icon(Icons.arrow_forward_outlined),
+),
+
+                SizedBox(width: 40),
               ],
             ),
           ],

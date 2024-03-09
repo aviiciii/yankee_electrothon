@@ -43,6 +43,7 @@ dependencies:
   get: ^4.6.6
   fl_chart: ^0.66.2
   shared_preferences: ^2.2.2
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:
