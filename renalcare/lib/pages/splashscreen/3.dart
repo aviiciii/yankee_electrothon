@@ -70,7 +70,9 @@ class splashScreen3 extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.to(login());
+                        },
                         child: const Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Text('Skip'),

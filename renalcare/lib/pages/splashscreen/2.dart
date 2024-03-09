@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/get_core.dart';
+import 'package:renalcare/pages/login/1.dart';
 
 
 import 'package:renalcare/pages/splashscreen/3.dart';
@@ -62,7 +63,7 @@ class SplashScreen2 extends StatelessWidget {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        // Get.to(OnbardingUserDetail1());
+                        Get.to(login());
                       },
                       child: const Padding(
                         padding: EdgeInsets.all(8.0),
