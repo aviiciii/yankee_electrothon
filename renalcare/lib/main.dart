@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // firebase
 import 'package:firebase_core/firebase_core.dart';
 import 'package:renalcare/pages/graph/graph.dart';
+import 'package:renalcare/pages/homepage.dart';
 
 import 'package:renalcare/pages/login/1.dart';
 import 'package:renalcare/pages/login/google_sign_in.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: splashScreen(),
+      home: myGraph(),
     );
   }
 }
