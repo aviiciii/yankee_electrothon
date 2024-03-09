@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/get_core.dart';
-import 'package:renalcare/services/firebase_service.dart';
+import 'package:renalcare/services/test_service.dart';
 
 class testPage extends StatefulWidget {
   const testPage({super.key});

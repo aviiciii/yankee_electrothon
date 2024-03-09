@@ -1,0 +1,34 @@
+{
+    "name": "Aswin",
+    "email": "aswin@gmail.com",
+    "phone": "134t43545",
+    "ckd level": "3",
+    "dialysis": "yes",
+    "age": "25",
+    "dialysis_details":{
+        "frequency": "3",
+        "last_date": "12/12/2019"
+    },
+    "dialysis_log": [
+        {
+            "date": "12/12/2019",
+            "time": "12:00"
+        },
+        {
+            "date": "12/12/2019",
+            "time": "12:00"
+        }
+    ],
+    "food_log":[
+        {
+            "food": "001",
+            "date": "12/12/2019",
+            "time": "12:00"
+        },
+        {
+            "food": "001",
+            "date": "12/12/2019",
+            "time": "12:00"
+        }
+    ]
+}
