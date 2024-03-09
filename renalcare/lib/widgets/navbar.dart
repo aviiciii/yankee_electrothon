@@ -36,11 +36,12 @@ class _NavBarState extends State<NavBar> {
       padding: EdgeInsets.zero,
       children: [
         UserAccountsDrawerHeader(
-          accountName: Text("Gopal"),
-          accountEmail: Text("Gopal@gmail.com"),
+          accountName: _user != null ? Text(_user!.displayName ?? '') : Text("Gopal"),
+          accountEmail: _user != null ? Text(_user!.email ?? '') : Text("work panala da"),
           currentAccountPicture: CircleAvatar(
             child: ClipOval(
-              child: Image.asset('assets/logo.png'),
+              child: Image.network(
+                _user != null ? _user!.photoURL ?? '' : 'https://www.shutterstock.com/image-vector/face-palm-retro-vintage-disappointed-600nw-258823979.jpg')
             ),
           ),
           decoration: BoxDecoration(
