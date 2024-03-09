@@ -94,6 +94,15 @@ class discover extends StatelessWidget {
                       width: 1.0,
                     ),
                   ),
+                  child: Center(
+                    child: Text(
+                      'Idly',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 100),
                 Container(
@@ -104,6 +113,15 @@ class discover extends StatelessWidget {
                     border: Border.all(
                       color: Colors.grey,
                       width: 1.0,
+                    ),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Dosa',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -122,6 +140,15 @@ class discover extends StatelessWidget {
                       width: 1.0,
                     ),
                   ),
+                  child: Center(
+                    child: Text(
+                      'Chappatti',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 100),
                 Container(
@@ -132,6 +159,15 @@ class discover extends StatelessWidget {
                     border: Border.all(
                       color: Colors.grey,
                       width: 1.0,
+                    ),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'White Rice',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -150,6 +186,15 @@ class discover extends StatelessWidget {
                       width: 1.0,
                     ),
                   ),
+                  child: Center(
+                    child: Text(
+                      'Geeri Rice',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 100),
                 Container(
@@ -160,6 +205,15 @@ class discover extends StatelessWidget {
                     border: Border.all(
                       color: Colors.grey,
                       width: 1.0,
+                    ),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Pongal',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -178,6 +232,15 @@ class discover extends StatelessWidget {
                       width: 1.0,
                     ),
                   ),
+                  child: Center(
+                    child: Text(
+                      'Chicken',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 100),
                 Container(
@@ -188,6 +251,15 @@ class discover extends StatelessWidget {
                     border: Border.all(
                       color: Colors.grey,
                       width: 1.0,
+                    ),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Thukuda',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -206,6 +278,15 @@ class discover extends StatelessWidget {
                       width: 1.0,
                     ),
                   ),
+                  child: Center(
+                    child: Text(
+                      'tikka',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 100),
                 Container(
@@ -216,6 +297,15 @@ class discover extends StatelessWidget {
                     border: Border.all(
                       color: Colors.grey,
                       width: 1.0,
+                    ),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'sambar',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),

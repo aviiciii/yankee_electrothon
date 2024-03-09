@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/get_core.dart';
-import 'package:renalcare/services/firebase_service.dart';
+import 'package:renalcare/services/test_service.dart';
 
 class testPage extends StatefulWidget {
   const testPage({super.key});
@@ -39,9 +39,9 @@ Widget userListView(){
           itemCount: userDetails.length,
           itemBuilder: (context, index){
             return ListTile(
-              title: Text(userDetails[0]['email']),
-              subtitle: Text(userDetails[0]['phone']),
-              trailing: Text(userDetails[0].id),
+              title: Text(userDetails[index]['email']),
+              subtitle: Text(userDetails[index]['phone']),
+              trailing: Text(userDetails[index]['uid']),
                  // print id of the document
 
             );

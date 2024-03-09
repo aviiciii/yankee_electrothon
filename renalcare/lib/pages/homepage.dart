@@ -42,46 +42,44 @@ class homePage extends StatelessWidget {
               Container(
                 width: 350,
                 margin: EdgeInsets.all(20),
-                child: Column(
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
-                      "Idli",
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    Container(
+                      alignment: Alignment.center,
+                      width: 100,
+                      child: Text(
+                        "Idli",
+                        style: TextStyle(fontSize: 18),
+                      ),
                     ),
-                    Row(
-                      children: [
-                        SizedBox(width: 5),
-                        Container(
-                          width: 130,
-                          height: 130,
-                          decoration: BoxDecoration(
-                              color: Colors.black,
-                              borderRadius: BorderRadius.circular(25)),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Phosporous - 10.00 mg"),
-                              Text("Potasium  - 10.00 mg"),
-                              Text("Protein - 7g"),
-                              Text("Sodium -7g"),
-                              Text("Water -10 mg"),
-                            ],
-                          ),
-                        ),
-                      ],
-                    )
+                    const VerticalDivider(
+                      width: 20,
+                      thickness: 1,
+                      indent: 0,
+                      endIndent: 0,
+                      color: Colors.grey,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Phosporous - 10.00 mg"),
+                          Text("Potasium  - 10.00 mg"),
+                          Text("Protein - 7g"),
+                          Text("Sodium -7g"),
+                          Text("Water -100 ml"),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(25),
                   border: Border.all(color: Colors.black),
                 ),
-                height: 200,
+                height: 125,
               )
             ],
           ),

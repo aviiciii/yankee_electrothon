@@ -23,13 +23,13 @@ class BarData {
 
   void initialzeBarData() {
     barData = [
-      IndividualBar(x: 0, y: monday),
-      IndividualBar(x: 1, y: tuesday),
-      IndividualBar(x: 2, y: wednesday),
-      IndividualBar(x: 3, y: thursday),
-      IndividualBar(x: 4, y: friday),
-      IndividualBar(x: 5, y: saturday),
-      IndividualBar(x: 6, y: sunday),
+      IndividualBar(x: 0, y: sunday),
+      IndividualBar(x: 1, y: monday),
+      IndividualBar(x: 2, y: tuesday),
+      IndividualBar(x: 3, y: wednesday),
+      IndividualBar(x: 4, y: thursday),
+      IndividualBar(x: 5, y: friday),
+      IndividualBar(x: 6, y: saturday),
     ];
   }
 }

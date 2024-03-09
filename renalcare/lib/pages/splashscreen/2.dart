@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/get_core.dart';
-import 'package:renalcare/pages/graph/bar_chart.dart';
-import 'package:renalcare/pages/graph/graph.dart';
-import 'package:renalcare/pages/splashscreen/1.dart';
-import 'package:renalcare/pages/splashscreen/2.dart';
+
+
 import 'package:renalcare/pages/splashscreen/3.dart';
 
 class SplashScreen2 extends StatelessWidget {
