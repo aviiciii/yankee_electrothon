@@ -74,7 +74,7 @@ class _NavBarState extends State<NavBar> {
             await _auth.signOut();
 
             SharedPreferences pref = await SharedPreferences.getInstance();
-            pref.remove("email");
+            pref.setString("email", "");
 
             Get.to(splashScreen());
           },
