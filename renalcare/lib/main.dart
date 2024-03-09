@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 // firebase
 import 'package:firebase_core/firebase_core.dart';
+import 'package:renalcare/pages/addfood.dart';
+import 'package:renalcare/pages/food.dart';
 import 'package:renalcare/pages/homepage.dart';
 import 'package:renalcare/pages/onboarding/1.dart';
 import 'package:renalcare/pages/onboarding/5.dart';
@@ -18,7 +20,6 @@ import 'package:get/get.dart';
 
 // pages
 import 'package:renalcare/pages/splashscreen/1.dart';
-
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,6 +45,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-

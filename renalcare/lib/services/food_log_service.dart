@@ -12,7 +12,7 @@ class DatabaseService {
   DatabaseService(document_id) {
     _foodLogCollectionReference = _firestore
         .collection(COLLECTION_REF)
-        .doc("ulix3a2rwO2qjIVAKmgM")
+        .doc(document_id)
         .collection(FOOD_LOG_COLLECTION_REF)
         .withConverter<FoodLog>(
             fromFirestore: (snapshots, _) => FoodLog.fromJson(

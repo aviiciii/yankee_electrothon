@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:renalcare/pages/homepage.dart';
 import 'package:renalcare/pages/onboarding/1.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_in_button/sign_in_button.dart';
@@ -75,7 +76,14 @@ class _loginState extends State<login> {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString("email", _user!.email.toString());
 
-      Get.to(OnboardingUserDetail1());
+      // check if user is new
+      if (_user!.metadata.creationTime == _user!.metadata.lastSignInTime) {
+        Get.to(OnboardingUserDetail1());
+      } else {
+        Get.to(homePage());
+      }
+
+
     } catch (e) {
       print(e);
     }

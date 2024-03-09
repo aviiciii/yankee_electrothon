@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:renalcare/pages/homepage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_in_button/sign_in_button.dart';
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -83,6 +85,13 @@ class _MyHomePageState extends State<MyHomePage> {
     try {
       GoogleAuthProvider googleProvider = GoogleAuthProvider();
       _auth.signInWithProvider(googleProvider);
+
+      // get uid of user
+      print(_user!.uid);
+      // save data to shared prefrence
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('uid', _user!.uid);
+
       Get.to(homePage());
     } catch (e) {
       print(e);

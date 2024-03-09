@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:renalcare/pages/addfood.dart';
 import 'package:renalcare/pages/discover.dart';
 import 'package:renalcare/pages/graph/graph.dart';
 import 'package:renalcare/pages/homepage.dart';
@@ -65,12 +66,10 @@ class _bottomNavState extends State<bottomNav> {
         Get.to(homePage());
         break;
       case 1:
-        // Navigate to the About page
         Get.to(discover());
         break;
       case 2:
-        // Navigate to the Contact page
-        // Get.to()
+        Get.to(addFood());
         break;
       case 3:
         Get.to(myGraph());
