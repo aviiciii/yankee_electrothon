@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:renalcare/pages/onboarding/4.dart';
 
-class OnboardingUserDetail3 extends StatefulWidget {
-  final int? selectedBloodPressureOption; // Corrected parameter name
+// OnboardingUserDetail3
 
-  const OnboardingUserDetail3({Key? key, this.selectedBloodPressureOption, int? selectedDialysisOption}) : super(key: key);
+class OnboardingUserDetail3 extends StatefulWidget {
+  final int? selectedDialysisOption; // Corrected parameter name
+
+  const OnboardingUserDetail3({Key? key, this.selectedDialysisOption}) : super(key: key);
 
   @override
   _OnboardingUserDetail3State createState() => _OnboardingUserDetail3State();
@@ -13,6 +17,9 @@ class OnboardingUserDetail3 extends StatefulWidget {
 
 class _OnboardingUserDetail3State extends State<OnboardingUserDetail3> {
   int? selectedOption; // Track the selected option, null means no selection
+
+  final CollectionReference userDetailsCollection =
+      FirebaseFirestore.instance.collection('UserDetails');
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +29,7 @@ class _OnboardingUserDetail3State extends State<OnboardingUserDetail3> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Do you have \n High Blood Pressure?',
+              'Do you have High Blood Pressure?',
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -80,27 +87,23 @@ class _OnboardingUserDetail3State extends State<OnboardingUserDetail3> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-               ElevatedButton(
-  onPressed: selectedOption != null
-      ? () {
-          Get.to(OnboardingUserDetail4(
-            selectedDiabetesOption: selectedOption, // Pass the selected option
-          ));
-        }
-      : null, // Disable the button if no option is selected
-  child: Icon(Icons.arrow_forward_outlined),
-),
- ElevatedButton(
+                ElevatedButton(
                   onPressed: selectedOption != null
-                      ? () {
-                          Get.to(OnboardingUserDetail4(
-                            selectedBloodPressureOption: selectedOption, // Pass the selected option
-                          ));
+                      ? () async {
+                          User? user = FirebaseAuth.instance.currentUser;
+                          if (user != null) {
+                            await userDetailsCollection.doc(user.uid).update({
+                              'hasHighBloodPressure': selectedOption == 1,
+                            });
+                          } else {
+                            print('User is not signed in.');
+                          }
+                          Get.to(OnboardingUserDetail4());
                         }
-                      : null, // Disable the button if no option is selected
+                      : null,
                   child: Icon(Icons.arrow_forward_outlined),
                 ),
-                SizedBox(width: 40)
+                SizedBox(width: 40),
               ],
             ),
           ],
@@ -109,3 +112,4 @@ class _OnboardingUserDetail3State extends State<OnboardingUserDetail3> {
     );
   }
 }
+
