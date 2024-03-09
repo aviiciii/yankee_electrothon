@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: OnboardingUserDetail5(),
+      home: OnboardingUserDetail1(),
     );
   }
 }

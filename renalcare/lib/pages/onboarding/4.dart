@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:renalcare/pages/homepage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:renalcare/pages/onboarding/5.dart';
+import 'package:renalcare/pages/onboarding/6.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
@@ -90,7 +92,7 @@ class _OnboardingUserDetail4State extends State<OnboardingUserDetail4> {
                           // Store user data in Firestore
                           _storeUserData(selectedOption!);
                           // Navigate to the homepage
-                          Get.to(homePage());
+                          Get.to(OnboardingUserDetail5());
                         }
                       : null,
                   child: Icon(Icons.arrow_forward_outlined),
