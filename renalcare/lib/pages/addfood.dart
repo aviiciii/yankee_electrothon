@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 
 class addFood extends StatefulWidget {
-  const addFood({super.key});
+  const addFood({Key? key}) : super(key: key);
 
   @override
   State<addFood> createState() => _addFoodState();
 }
 
 class _addFoodState extends State<addFood> {
+  TextEditingController _foodController = TextEditingController();
+
+  @override
+  void dispose() {
+    _foodController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,8 +27,12 @@ class _addFoodState extends State<addFood> {
               height: 15,
             ),
             fooddate("Feb 29"),
+            SizedBox(
+              height: 15,
+            ),
             foodcontainer("Breakfast", "Biriyani"),
             foodcontainer("Lunch", "Roti"),
+            foodcontainer("Dinner", "Dosai"),
           ],
         ),
       ),
@@ -30,7 +42,9 @@ class _addFoodState extends State<addFood> {
   Container foodcontainer(String _foodtype, String _food) {
     return Container(
       height: 80,
-      decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+      padding: EdgeInsets.all(10),
+      margin: EdgeInsets.only(bottom: 15),
+      // decoration: BoxDecoration(border: Border.all(color: Colors.black)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -45,8 +59,49 @@ class _addFoodState extends State<addFood> {
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: Colors.black)),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [Text(_food), Icon(Icons.edit)],
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(_food),
+                GestureDetector(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('Edit Food'),
+                          content: TextField(
+                            controller: _foodController,
+                            decoration: InputDecoration(
+                              hintText: 'Enter food name',
+                            ),
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                // Save button logic
+                                String newFood = _foodController.text;
+                                setState(() {
+                                  _food = newFood;
+                                });
+                                Navigator.of(context).pop();
+                              },
+                              child: Text('Save'),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                // Cancel button logic
+                                Navigator.of(context).pop();
+                              },
+                              child: Text('Cancel'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  child: Icon(Icons.edit),
+                ),
+              ],
             ),
           )
         ],
