@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:renalcare/pages/onboarding/2.dart';
 import 'package:renalcare/widgets/nextbutton.dart';
 
-class OnboardingUserDetail1 extends StatelessWidget {
-  const OnboardingUserDetail1({super.key});
+class OnboardingUserDetail1 extends StatefulWidget {
+  const OnboardingUserDetail1({Key? key}) : super(key: key);
+
+  @override
+  _OnboardingUserDetail1State createState() => _OnboardingUserDetail1State();
+}
+
+class _OnboardingUserDetail1State extends State<OnboardingUserDetail1> {
+  int? selectedStage; // Track the selected stage, null means no selection
 
   @override
   Widget build(BuildContext context) {
@@ -22,140 +28,30 @@ class OnboardingUserDetail1 extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            TextButton(
-              onPressed: () {
-                // Add your logic here
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Checkbox(
-                    value: false,
-                    onChanged: (value) {
-                      // Add your logic here
-                    },
-                  ),
-                  const Text(
-                    'CDK STAGE 1',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
+            for (int i = 1; i <= 5; i++)
+              RadioListTile<int>(
+                title: Text('CDK STAGE $i'),
+                value: i,
+                groupValue: selectedStage,
+                onChanged: (value) {
+                  setState(() {
+                    selectedStage = value;
+                  });
+                },
               ),
-            ),
-            const SizedBox(height: 8),
-            TextButton(
-              onPressed: () {
-                // Add your logic here
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Checkbox(
-                    value: false,
-                    onChanged: (value) {
-                      // Add your logic here
-                    },
-                  ),
-                  const Text(
-                    'CDK STAGE 2',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 8),
-            TextButton(
-              onPressed: () {
-                // Add your logic here
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Checkbox(
-                    value: false,
-                    onChanged: (value) {
-                      // Add your logic here
-                    },
-                  ),
-                  const Text(
-                    'CDK STAGE 3',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            TextButton(
-              onPressed: () {
-                // Add your logic here
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Checkbox(
-                    value: false,
-                    onChanged: (value) {
-                      // Add your logic here
-                    },
-                  ),
-                  const Text(
-                    'CDK STAGE 4',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            TextButton(
-              onPressed: () {
-                // Add your logic here
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Checkbox(
-                    value: false,
-                    onChanged: (value) {
-                      // Add your logic here
-                    },
-                  ),
-                  const Text(
-                    'CDK STAGE 5',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
             const SizedBox(
               height: 15,
             ),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 ElevatedButton(
-                  onPressed: () {
-                    Get.to(OnboardingUserDetail2());
-                  },
+                  onPressed: selectedStage != null
+                      ? () {
+                          // Navigate to the next page when a stage is selected
+                          Get.to(OnboardingUserDetail2(selectedStage!));
+                        }
+                      : null, // Disable the button if no stage is selected
                   child: Icon(Icons.arrow_forward_outlined),
                 ),
                 SizedBox(width: 40)
