@@ -16,14 +16,11 @@ class _addFoodState extends State<addFood> {
 
   var today = DateFormat('dd-MM-yyyy').format(DateTime.now());
 
-
-
   @override
   Widget build(BuildContext context) {
 
-    
-
     return Scaffold(
+      
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         
