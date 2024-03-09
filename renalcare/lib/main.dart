@@ -2,17 +2,13 @@ import 'package:flutter/material.dart';
 
 // firebase
 import 'package:firebase_core/firebase_core.dart';
-import 'package:renalcare/pages/graph/graph.dart';
-
-import 'package:renalcare/pages/login/1.dart';
-import 'package:renalcare/pages/login/google_sign_in.dart';
-import 'package:renalcare/pages/splashscreen/1.dart';
-
+import 'package:renalcare/input.dart';
 import 'firebase_options.dart';
 import 'package:get/get.dart';
 import 'pages/graph/bar_chart.dart';
 
 // pages
+import 'package:renalcare/pages/testpage.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +22,7 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -34,7 +31,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: splashScreen(),
+      home: TextFieldPage(),
     );
   }
 }
+
