@@ -25,13 +25,33 @@ class _myGraphState extends State<myGraph> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: bottomNav(),
-      body: Center(
-        child: SizedBox(
-          height: 400,
-          child: barChart(
-            weeklySummary: weeklySummary,
-          ),
+      appBar: AppBar(
+        title: Text(
+          " Graph",
+          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         ),
+        toolbarHeight: 70,
+      ),
+      body: Column(
+        children: [
+          Text(
+            "Weekly Report",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          Text(
+            "Based on Food Consumption",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          SizedBox(height: 100),
+          Center(
+            child: SizedBox(
+              height: 400,
+              child: barChart(
+                weeklySummary: weeklySummary,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

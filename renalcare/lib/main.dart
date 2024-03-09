@@ -7,6 +7,7 @@ import 'package:renalcare/pages/homepage.dart';
 
 import 'package:renalcare/pages/login/1.dart';
 import 'package:renalcare/pages/login/google_sign_in.dart';
+import 'package:renalcare/pages/profile.dart';
 import 'package:renalcare/pages/splashscreen/1.dart';
 
 import 'firebase_options.dart';
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: myGraph(),
+      home: profile(),
     );
   }
 }

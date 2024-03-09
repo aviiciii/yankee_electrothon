@@ -8,7 +8,6 @@ class profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.arrow_back),
         title: Text(
           "User Information",
           style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
@@ -57,9 +56,120 @@ class profile extends StatelessWidget {
               SizedBox(
                 height: 25,
               ),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text("UPDATE"),
+              TextButton(onPressed: () {}, child: Text("Update")),
+              //TEXT
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                width: double.infinity,
+                alignment: Alignment.center,
+                child: Text(
+                  "Statistics",
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Text(
+                "FEB 28",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                child: Container(
+                  width: double.infinity,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black),
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          alignment: Alignment.center,
+                          child: Text("Idli & Sambar"),
+                        ),
+                      ),
+                      const VerticalDivider(
+                        width: 20,
+                        thickness: 1,
+                        indent: 0,
+                        endIndent: 0,
+                        color: Colors.grey,
+                      ),
+                      Expanded(
+                        child: Container(
+                          alignment: Alignment.center,
+                          child: Text("White Rice & Chicken"),
+                        ),
+                      ),
+                      const VerticalDivider(
+                        width: 20,
+                        thickness: 1,
+                        indent: 0,
+                        endIndent: 0,
+                        color: Colors.grey,
+                      ),
+                      Expanded(
+                        child: Container(
+                          alignment: Alignment.center,
+                          child: Text("Dosa and sambar"),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Text(
+                "FEB 29",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                child: Container(
+                  width: double.infinity,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black),
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          alignment: Alignment.center,
+                          child: Text("Idli & Sambar"),
+                        ),
+                      ),
+                      const VerticalDivider(
+                        width: 20,
+                        thickness: 1,
+                        indent: 0,
+                        endIndent: 0,
+                        color: Colors.grey,
+                      ),
+                      Expanded(
+                        child: Container(
+                          alignment: Alignment.center,
+                          child: Text("White Rice & Chicken"),
+                        ),
+                      ),
+                      const VerticalDivider(
+                        width: 20,
+                        thickness: 1,
+                        indent: 0,
+                        endIndent: 0,
+                        color: Colors.grey,
+                      ),
+                      Expanded(
+                        child: Container(
+                          alignment: Alignment.center,
+                          child: Text("Dosa and sambar"),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ],
           ),
