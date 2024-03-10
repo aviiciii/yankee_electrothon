@@ -9,6 +9,7 @@ import 'package:renalcare/pages/homepage.dart';
 import 'package:renalcare/pages/onboarding/1.dart';
 import 'package:renalcare/pages/onboarding/5.dart';
 import 'package:renalcare/pages/onboarding/6.dart';
+import 'package:renalcare/pages/onboarding/8.dart';
 import 'package:renalcare/pages/sidebar/1.dart';
 import 'package:renalcare/pages/sidebar/2.dart';
 import 'package:renalcare/pages/sidebar/3.dart';
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: learnCdk(), // Replace this line with the correct function call or define the function
+      home: settings(), // Replace this line with the correct function call or define the function
     );
   }
 }

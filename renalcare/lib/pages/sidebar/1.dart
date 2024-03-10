@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:renalcare/widgets/bottomnav.dart';
 
-class settings extends StatelessWidget {
+class settings extends StatefulWidget {
   const settings({super.key});
 
   @override
+  State<settings> createState() => _settingsState();
+}
+
+class _settingsState extends State<settings> {
+  late DateTime selectedDate;
+
+
+  @override
+  void initState() {
+    super.initState();
+    selectedDate = DateTime.now(); // Initialize selectedDate in initState
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -60,8 +72,73 @@ class settings extends StatelessWidget {
               SizedBox(
                 height: 25,
               ),
+              SizedBox(
+                height: 25,
+              ),           
+              Center(child: Text('Enter your DOB', style: TextStyle(fontSize: 20))),
               Center(
-                child: TextButton(
+                child: Text(
+                      "${selectedDate.year}-${selectedDate.month}-${selectedDate.day}",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+              ),
+                 Center(
+                   child: ElevatedButton(
+                      child: const Text('Choose Date'),
+                      onPressed: () async {
+                        DateTime? dateTime = await showDatePicker(
+                          context: context,
+                          initialDate: selectedDate,
+                          firstDate: DateTime(2000),
+                          lastDate: DateTime(3000),
+                        );
+                        if (dateTime != null) {
+                          setState(() {
+                            selectedDate = dateTime;
+                          });
+                        }
+                      },
+                    ),
+                 ),
+                 SizedBox(
+                height: 25,
+              ), 
+                 Center(child: Text('When was your First Dialysis', style: TextStyle(fontSize: 20))),
+                Center(
+                child: Text(
+                      "${selectedDate.year}-${selectedDate.month}-${selectedDate.day}",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+              ),
+                 Center(
+                   child: ElevatedButton(
+                      child: const Text('Choose Date'),
+                      onPressed: () async {
+                        DateTime? dateTime = await showDatePicker(
+                          context: context,
+                          initialDate: selectedDate,
+                          firstDate: DateTime(2000),
+                          lastDate: DateTime(3000),
+                        );
+                        if (dateTime != null) {
+                          setState(() {
+                            selectedDate = dateTime;
+                          });
+                        }
+                      },
+                    ),
+                 ),
+                 SizedBox(
+                height: 25,
+              ),
+                 Center(
+                  child: TextButton(
                   onPressed: () {
                     // TODO: Add functionality to update the user information
                   },
