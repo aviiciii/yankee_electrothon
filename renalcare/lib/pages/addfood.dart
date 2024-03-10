@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:renalcare/models/food_log.dart';
 import 'package:renalcare/services/food_log_service.dart';
 import 'package:renalcare/widgets/bottomnav.dart';
 
@@ -11,10 +13,14 @@ class addFood extends StatefulWidget {
 }
 
 class _addFoodState extends State<addFood> {
+  
   final DatabaseService _databaseService =
-      DatabaseService("ulix3a2rwO2qjIVAKmgM");
+      DatabaseService(FirebaseAuth.instance.currentUser?.uid.toString() ?? "ulix3a2rwO2qjIVAKmgM");
 
   var today = DateFormat('dd-MM-yyyy').format(DateTime.now());
+  TextEditingController _foodController = TextEditingController();
+
+
 
   @override
   void dispose() {
@@ -71,81 +77,6 @@ class _addFoodState extends State<addFood> {
                 SizedBox(
                   height: 45,
                 ),
-                // if (logs.isEmpty) ...[
-                //   Container(
-                //     height: 180,
-                //     padding: EdgeInsets.all(10),
-                //     margin: EdgeInsets.only(bottom: 15),
-                //     child: Container(
-                //       height: 80,
-                //       padding: EdgeInsets.all(10),
-                //       margin: EdgeInsets.only(bottom: 15),
-                //       // decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-                //       child: Row(
-                //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //         children: [
-                //           Text(
-                //             "BreakFast",
-                //             style: TextStyle(
-                //                 fontSize: 20, fontWeight: FontWeight.bold),
-                //           ),
-                //           GestureDetector(
-                //             onTap: () {
-                //               showDialog(
-                //                 context: context,
-                //                 builder: (BuildContext context) {
-                //                   return AlertDialog(
-                //                     title: Text('Add Food'),
-                //                     content: TextField(
-                //                       // controller: _foodController,
-                //                       decoration: InputDecoration(
-                //                         hintText: 'add food name',
-                //                       ),
-                //                     ),
-                //                     actions: [
-                //                       TextButton(
-                //                         onPressed: () {
-                //                           // Save button logic
-                //                           // String newFood = _foodController.text;
-                //                           // setState(() {
-                //                           //   _food = newFood;
-                //                           // });
-                //                           Navigator.of(context).pop();
-                //                         },
-                //                         child: Text('Save'),
-                //                       ),
-                //                       TextButton(
-                //                         onPressed: () {
-                //                           // Cancel button logic
-                //                           Navigator.of(context).pop();
-                //                         },
-                //                         child: Text('Cancel'),
-                //                       ),
-                //                     ],
-                //                   );
-                //                 },
-                //               );
-                //             },
-                //             child: Container(
-                //               width: 160,
-                //               height: 50,
-                //               decoration: BoxDecoration(
-                //                   borderRadius: BorderRadius.circular(10),
-                //                   border: Border.all(color: Colors.black)),
-                //               child: Row(
-                //                 mainAxisAlignment: MainAxisAlignment.center,
-                //                 children: [
-                //                   Text("Add"),
-                //                   Icon(Icons.add),
-                //                 ],
-                //               ),
-                //             ),
-                //           ),
-                //         ],
-                //       ),
-                //     ),
-                //   ),
-                // ],
                 if (breakfasts.isEmpty) ...{
                   emptyFood('Breakfast'),
                 } else ...{
@@ -277,6 +208,7 @@ class _addFoodState extends State<addFood> {
   }
 
   Container emptyFood(String _time) {
+
     return Container(
       height: 80,
       padding: EdgeInsets.all(10),
@@ -301,7 +233,7 @@ class _addFoodState extends State<addFood> {
                     return AlertDialog(
                       title: Text('Add Food'),
                       content: TextField(
-                        // controller: _foodController,
+                        controller: _foodController,
                         decoration: InputDecoration(
                           hintText: 'add food name',
                         ),
@@ -309,11 +241,20 @@ class _addFoodState extends State<addFood> {
                       actions: [
                         TextButton(
                           onPressed: () {
+                            
+
                             // Save button logic
-                            // String newFood = _foodController.text;
-                            // setState(() {
-                            //   _food = newFood;
-                            // });
+                            String food = _foodController.text;
+
+                            // add food obj
+                            FoodLog foodLog = FoodLog(
+                              food: food,
+                              date: today,
+                              time: _time,
+                            );
+
+                            _databaseService.add_food_log(foodLog);
+
                             Navigator.of(context).pop();
                           },
                           child: Text('Save'),
