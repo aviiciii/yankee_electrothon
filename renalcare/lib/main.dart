@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: settings(), // Replace this line with the correct function call or define the function
+      home: splashScreen(),
     );
   }
 }

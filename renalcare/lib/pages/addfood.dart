@@ -15,7 +15,7 @@ class addFood extends StatefulWidget {
 class _addFoodState extends State<addFood> {
   
   final DatabaseService _databaseService =
-      DatabaseService(FirebaseAuth.instance.currentUser?.uid.toString() ?? "ulix3a2rwO2qjIVAKmgM");
+      DatabaseService(FirebaseAuth.instance.currentUser?.uid.toString() ?? "null");
 
   var today = DateFormat('dd-MM-yyyy').format(DateTime.now());
   TextEditingController _foodController = TextEditingController();
@@ -46,6 +46,7 @@ class _addFoodState extends State<addFood> {
             }
 
             List logs = snapshot.data?.docs ?? [];
+
 
             logs = logs.where((log) => log['date'] == today).toList();
 
@@ -250,8 +251,6 @@ class _addFoodState extends State<addFood> {
                       actions: [
                         TextButton(
                           onPressed: () {
-                            
-
                             // Save button logic
                             String food = _foodController.text;
 
@@ -263,6 +262,9 @@ class _addFoodState extends State<addFood> {
                             );
 
                             _databaseService.add_food_log(foodLog);
+
+                            print('Food added');
+
                             _foodController.clear();
 
                             Navigator.of(context).pop();

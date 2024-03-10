@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:renalcare/models/food_log.dart';
 
-const String COLLECTION_REF = 'UserDetail';
+const String COLLECTION_REF = 'UserDetails';
 const String FOOD_LOG_COLLECTION_REF = 'FoodLog';
 
 class DatabaseService {

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:renalcare/pages/homepage.dart';
 import 'package:renalcare/pages/onboarding/8.dart';
 import 'package:renalcare/pages/profile.dart';
 
@@ -90,6 +91,7 @@ class _OnboardingUserDetail5State extends State<OnboardingUserDetail5> {
                   onPressed: () async {
                     await _saveDateToFirestore();
                     // Navigate to the profile page
+                    Get.to(() => homePage());
                   },
                   child: Icon(Icons.arrow_forward_outlined),
                 ),

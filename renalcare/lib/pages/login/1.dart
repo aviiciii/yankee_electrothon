@@ -75,13 +75,18 @@ class _loginState extends State<login> {
       // save to shared preferences
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString("email", _user!.email.toString());
-
-      // check if user is new
-      if (_user!.metadata.creationTime == _user!.metadata.lastSignInTime) {
-        Get.to(OnboardingUserDetail1());
-      } else {
+      print("Created: "+_user!.metadata.creationTime.toString());
+      print("Last Sign In: "+_user!.metadata.lastSignInTime.toString());
+      if (_user != null && _user!.metadata.creationTime != null && _user!.metadata.lastSignInTime != null) {
+        if (_user!.metadata.creationTime!.difference(_user!.metadata.lastSignInTime!).inMinutes < 2) {
+          // Add your code here
+          Get.to(OnboardingUserDetail1());
+        } 
+      }
+      else {
         Get.to(homePage());
       }
+      
 
 
     } catch (e) {

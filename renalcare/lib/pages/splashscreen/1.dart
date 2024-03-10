@@ -41,6 +41,9 @@ class _splashScreenState extends State<splashScreen>  {
     final prefs = await SharedPreferences.getInstance();
     var email =  prefs.getString("email");
     setState(() {
+      if (email ==null){
+        email = "";
+      }
       finalEmail = email!;
     });
   }
