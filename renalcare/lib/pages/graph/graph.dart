@@ -51,6 +51,20 @@ class _myGraphState extends State<myGraph> {
               ),
             ),
           ),
+          SizedBox(height: 20),
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.black),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: TextButton(
+              onPressed: () {},
+              child: Text(
+                "Add dialysis data",
+                style: TextStyle(fontSize: 20, color: Colors.black),
+              ),
+            ),
+          )
         ],
       ),
     );

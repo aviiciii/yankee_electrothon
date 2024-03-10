@@ -33,7 +33,6 @@ class _addFoodState extends State<addFood> {
     return Scaffold(
       bottomNavigationBar: bottomNav(),
       body: Padding(
-
         padding: const EdgeInsets.all(15.0),
         child: StreamBuilder(
           stream: _databaseService.get_food_logs(),
@@ -67,6 +66,11 @@ class _addFoodState extends State<addFood> {
                     (log) => log['time'] == 'Dinner' || log['time'] == 'dinner')
                 .map((log) => log['food'])
                 .toList();
+            List waters = logs
+                .where(
+                    (log) => log['time'] == 'Water' || log['time'] == 'water')
+                .map((log) => log['food'])
+                .toList();
 
             return ListView(
               children: [
@@ -91,6 +95,11 @@ class _addFoodState extends State<addFood> {
                   emptyFood('Dinner'),
                 } else ...{
                   for (var log in dinners) foodcontainer('Dinner', log),
+                },
+                if (waters.isEmpty) ...{
+                  emptyFood('Water'),
+                } else ...{
+                  for (var log in waters) foodcontainer('Water', log),
                 },
               ],
             );
@@ -287,8 +296,8 @@ class _addFoodState extends State<addFood> {
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
