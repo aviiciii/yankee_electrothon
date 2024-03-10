@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:renalcare/pages/homepage.dart';
 import 'package:renalcare/pages/splashscreen/2.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-String finalEmail = ""; 
+String finalEmail = "";
 
 class splashScreen extends StatefulWidget {
   const splashScreen({super.key});
@@ -12,24 +13,20 @@ class splashScreen extends StatefulWidget {
   State<splashScreen> createState() => _splashScreenState();
 }
 
-class _splashScreenState extends State<splashScreen>  {
+class _splashScreenState extends State<splashScreen> {
   @override
   void initState() {
     getValidationData().whenComplete(() async {
       await Future.delayed(Duration(milliseconds: 3000), () {});
       // check if email is null
       if (finalEmail == "") {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => SplashScreen2()));
+        Get.to(() => SplashScreen2());
       } else {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => homePage()));
+        Get.to(homePage());
       }
-    
     });
     super.initState();
     _navigateToHome();
-
   }
 
   _navigateToHome() async {
@@ -37,17 +34,17 @@ class _splashScreenState extends State<splashScreen>  {
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => SplashScreen2()));
   }
-  Future  getValidationData() async {
+
+  Future getValidationData() async {
     final prefs = await SharedPreferences.getInstance();
-    var email =  prefs.getString("email");
+    var email = prefs.getString("email");
     setState(() {
-      if (email ==null){
+      if (email == null) {
         email = "";
       }
       finalEmail = email!;
     });
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -79,13 +76,4 @@ class _splashScreenState extends State<splashScreen>  {
       ),
     );
   }
-
-
-
-    
-    
-
-
-
-
 }
