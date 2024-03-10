@@ -263,6 +263,7 @@ class _addFoodState extends State<addFood> {
                             );
 
                             _databaseService.add_food_log(foodLog);
+                            _foodController.clear();
 
                             Navigator.of(context).pop();
                           },
@@ -271,6 +272,7 @@ class _addFoodState extends State<addFood> {
                         TextButton(
                           onPressed: () {
                             // Cancel button logic
+                            _foodController.clear();
                             Navigator.of(context).pop();
                           },
                           child: Text('Cancel'),
@@ -296,9 +298,10 @@ class _addFoodState extends State<addFood> {
                 ),
               ),
             ),
-          ),
+          
         ],
       ),
+    ),
     );
   }
 }
